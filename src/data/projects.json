@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Komunikasi",
+    "description": "A modern web-based group chat app built with Next.js, Prisma ORM, and shadcn/ui.",
+    "stack": ["Next.js", "Prisma ORM", "Pusher", "Zod"],
+    "link": "https://komunikasi.vercel.app",
+    "repo": null,
+    "private": true
+  },
+
+  {
+    "title": "URL Shortener",
+    "description": "Minimal URL shortener built using Next.js & Prisma.",
+    "stack": ["Next.js", "Prisma", "SQLite"],
+    "link": "https://short.faiq.dev",
+    "repo": "https://github.com/faiqthirafi/url-shortener",
+    "disabled": true
+  }
+]

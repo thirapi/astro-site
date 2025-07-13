@@ -6,14 +6,14 @@ import { Menu } from "lucide-react";
 const links = [
   { name: "Home", href: "/" },
   { name: "Contact", href: "/contact" },
-  { name: "Work", href: null },
+  { name: "Work", href: "/work" },
   { name: "Resume", href: null },
 ];
 
 export default function Navbar() {
   return (
     <header className="fixed bottom-20 left-1/2 z-50 -translate-x-1/2 bg-background/80 backdrop-blur-md rounded-xl shadow-md px-6 py-2 w-fit flex items-center gap-4 border border-border">
-      <nav className="flex items-center gap-6 text-sm font-semibold font-[doto] tracking-wide">
+      <nav className="flex items-center gap-6 text-sm font-semibold font-doto tracking-wide">
         {links.map((link) =>
           link.href ? (
             <a

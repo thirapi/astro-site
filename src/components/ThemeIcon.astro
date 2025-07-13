@@ -2,12 +2,19 @@
 const { class: className, ...rest } = Astro.props;
 ---
 
-<button id="themeToggle" class={className} {...rest}>
+<button 
+  id="themeToggle" 
+  class={className} 
+  aria-label="Toggle dark mode"
+  title="Toggle dark mode"
+  {...rest}
+>
   <svg
     width="30px"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     class="icon"
+    aria-hidden="true"
   >
     <path
       class="sun"
@@ -31,6 +38,20 @@ const { class: className, ...rest } = Astro.props;
     transition:
       background-color 0.3s ease,
       box-shadow 0.3s ease;
+    border-radius: 8px;
+  }
+
+  #themeToggle:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  :global(.dark) #themeToggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  #themeToggle:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
   }
 
   /* === Icon Styling & Transitions === */
@@ -90,7 +111,29 @@ const { class: className, ...rest } = Astro.props;
         root.classList.toggle("dark");
         const isDark = root.classList.contains("dark");
         localStorage.setItem("theme", isDark ? "dark" : "light");
+        
+        // Update aria-label for screen readers
+        toggleBtn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
       });
+
+      // Set initial aria-label
+      const isDark = document.documentElement.classList.contains("dark");
+      toggleBtn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
     }
+
+    // Listen for system theme changes (only if user hasn't set a preference)
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", (e) => {
+      const userTheme = localStorage.getItem("theme");
+      // Only auto-update if user hasn't explicitly set a theme
+      if (!userTheme) {
+        const root = document.documentElement;
+        if (e.matches) {
+          root.classList.add("dark");
+        } else {
+          root.classList.remove("dark");
+        }
+      }
+    });
   });
 </script>

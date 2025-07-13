@@ -1,0 +1,17 @@
+---
+import GridLayout from "@/layouts/GridLayout.astro";
+import FadeInSection from "../FadeInSection";
+import { TechStack } from "./TechStack";
+import { Project } from "./Projects";
+---
+
+<GridLayout>
+  <FadeInSection client:load>
+    <h1 class="text-3xl font-bold mb-6">Things I've Built</h1>
+    <p class="text-lg text-muted-foreground max-w-prose mb-4">
+      These are selected projects and collaborations — from personal explorations to professional work — where I've contributed in development.
+    </p>
+    <TechStack />
+    <Project />
+  </FadeInSection>
+</GridLayout>

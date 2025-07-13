@@ -1,0 +1,111 @@
+---
+import "../styles/global.css";
+import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>🚫 No WordPress Here</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap");
+
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .share-tech-mono-regular {
+        font-family: "Share Tech Mono", monospace;
+      }
+
+      .doto-bold {
+        font-family: "Doto", sans-serif;
+        font-weight: 900;
+      }
+
+      .glitch {
+        font-size: 2rem;
+        animation: glitch 1s infinite;
+        letter-spacing: 0.1em;
+        text-shadow:
+          2px 0 red,
+          -2px 0 cyan,
+          2px 2px rgba(255, 255, 255, 0.3),
+          -2px -2px rgba(255, 255, 255, 0.3);
+      }
+
+      @keyframes glitch {
+        0% {
+          text-shadow: 2px 0 red, -2px 0 cyan;
+        }
+        20% {
+          text-shadow: -2px -2px red, 2px 2px cyan;
+        }
+        40% {
+          text-shadow: 2px -2px red, -2px 2px cyan;
+        }
+        60% {
+          text-shadow: 0 2px red, 0 -2px cyan;
+        }
+        80% {
+          text-shadow: 2px 2px red, -2px -2px cyan;
+        }
+        100% {
+          text-shadow: -2px 0 red, 2px 0 cyan;
+        }
+      }
+
+      a {
+        text-decoration: underline;
+        margin-top: 1rem;
+      }
+
+      p {
+        margin: 0.25rem 0;
+      }
+    </style>
+    <script>
+      (function () {
+        try {
+          const theme = localStorage.getItem("theme");
+          const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (theme === "dark" || theme === "light") {
+            document.documentElement.classList.toggle("dark", theme === "dark");
+          } else if (systemPrefersDark) {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+        } catch (error) {
+          console.warn("Theme detection failed:", error);
+          document.documentElement.classList.remove("dark");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="relative w-full h-full flex flex-col items-center justify-center bg-white dark:bg-black font-sans text-center px-4 text-black dark:text-white">
+      <!-- Grid Background -->
+      <div class="absolute inset-0 z-0 pointer-events-none bg-[length:40px_40px] bg-[linear-gradient(to_right,_#e4e4e7_1px,_transparent_1px),_linear-gradient(to_bottom,_#e4e4e7_1px,_transparent_1px)] dark:bg-[linear-gradient(to_right,_#262626_1px,_transparent_1px),_linear-gradient(to_bottom,_#262626_1px,_transparent_1px)]"></div>
+
+      <!-- Radial Mask -->
+      <div class="absolute inset-0 z-0 pointer-events-none bg-white dark:bg-black [mask-image:radial-gradient(ellipse_at_center,_#00000079_20%,_black)] [-webkit-mask-image:radial-gradient(ellipse_at_center,_#00000079_20%,_black)]"></div>
+
+      <!-- Main Content -->
+      <main class="z-20">
+        <h1 class="glitch doto-bold text-white dark:text-white">🚫 404 – No WordPress Here</h1>
+        <p class="share-tech-mono-regular">This site is built with <strong>Astro</strong>, not WordPress.</p>
+        <p class="share-tech-mono-regular">Feel free to explore the stars instead 🚀</p>
+        <a href="/" class="inline-flex items-center gap-1 mt-4 text-white dark:text-white">
+          <HiOutlineArrowNarrowLeft className="text-xl" />
+          Back to Home
+        </a>
+      </main>
+    </div>
+  </body>
+</html>

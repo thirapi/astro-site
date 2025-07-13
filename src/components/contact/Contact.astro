@@ -1,33 +1,36 @@
 ---
 import GridLayout from "@/layouts/GridLayout.astro";
-import { Mail, Linkedin, MapPin, Twitter, Github } from "lucide-react";
+import { Mail, MapPin, Twitter, Github } from "lucide-react";
+import FadeInSection from "../FadeInSection";
 ---
 
 <GridLayout>
-  <section class="flex flex-col justify-center items-start p-4 md:pt-0">
-    <ul class="space-y-4 text-[18px] font-semibold font-[doto] tracking-wide">
-      <li class="flex items-center gap-4">
-        <Mail className="w-5 h-5" />
-        <span>thirapi@proton.me</span>
-      </li>
+  <FadeInSection client:load>
+    <section class="flex flex-col justify-center items-start p-4 md:pt-0">
+      <ul class="space-y-4 text-[18px] font-semibold font-doto tracking-wide">
         <li class="flex items-center gap-4">
-        <Github className="w-5 h-5" />
-        <a href="https://github.com/thirapi">@thirapi</a>
-      </li>
-      <li class="flex items-center gap-4">
-        <Twitter className="w-5 h-5" />
-        <a href="https://x.com/faiqthirapi">@faiqthirapi</a>
-      </li>
-      <!-- <li class="flex items-center gap-4">
+          <Mail className="w-5 h-5" />
+          <span>thirapi@proton.me</span>
+        </li>
+        <li class="flex items-center gap-4">
+          <Github className="w-5 h-5" />
+          <a href="https://github.com/thirapi">@thirapi</a>
+        </li>
+        <li class="flex items-center gap-4">
+          <Twitter className="w-5 h-5" />
+          <a href="https://x.com/faiqthirapi">@faiqthirapi</a>
+        </li>
+        <!-- <li class="flex items-center gap-4">
         <Linkedin className="w-5 h-5" />
         <a href="https://linkedin.com/in/faiq" target="_blank" class="underline"
           >linkedin.com/in/faiq</a
         >
       </li> -->
-      <li class="flex items-center gap-4">
-        <MapPin className="w-5 h-5" />
-        <span>Jawa Timur, Indonesia</span>
-      </li>
-    </ul>
-  </section>
+        <li class="flex items-center gap-4">
+          <MapPin className="w-5 h-5" />
+          <span>Jawa Timur, Indonesia</span>
+        </li>
+      </ul>
+    </section>
+  </FadeInSection>
 </GridLayout>
