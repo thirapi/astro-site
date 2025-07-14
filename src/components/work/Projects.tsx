@@ -9,7 +9,7 @@ export function Project() {
         {projects
         .filter((projects) => (!projects.disabled))
         .map((project) => (
-          <div key={project.title} className="p-4 rounded-lg border bg-neutral-900/60 hover:bg-neutral-900/75 shadow-sm">
+          <div key={project.title} className="p-4 rounded-lg border shadow-sm bg-white hover:bg-neutral-100 dark:bg-neutral-900/60 dark:hover:bg-neutral-900/75">
             <h3 className="text-xl font-bold">{project.title}</h3>
             <p className="text-muted-foreground">{project.description}</p>
 
